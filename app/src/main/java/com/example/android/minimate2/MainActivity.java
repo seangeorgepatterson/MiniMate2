@@ -3,6 +3,7 @@ package com.example.android.minimate2;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnLogin;
     private EditText txtUsername;
     private EditText txtPassword;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,15 +33,14 @@ public class MainActivity extends AppCompatActivity {
                 login(username, password);
             }
         });
+
+        user = new User(100,"user", "test", "pass", "here");
     }
 
     private void login(String un, String pwd){
-
-        if(!un.equals("") && !pwd.equals("")) {
-            Toast.makeText(getApplicationContext(), "login", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getApplicationContext(), "fail", Toast.LENGTH_SHORT).show();
-        }
+        Intent intent = new Intent(this, LoggedInActivity.class);
+        intent.putExtra("extra_user", user);
+        startActivity(intent);
     }
 
 

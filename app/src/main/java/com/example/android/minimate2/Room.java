@@ -1,3 +1,5 @@
+package com.example.android.minimate2;
+
 public class Room {
     private User servicedBy;
     private User checkedBy;
